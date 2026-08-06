@@ -292,11 +292,9 @@ htmlContent = htmlContent.replace(
 // 更新 CSS/JS 版本号 + 构建时间
 htmlContent = htmlContent.replace(/__VERSION__/g, version);
 htmlContent = htmlContent.replace(/(\.css|\.js)\?v=[a-z0-9]+/g, "$1?v=" + version);
-var now = new Date().toLocaleString("zh-CN", { hour12: false });
-htmlContent = htmlContent.replace(/__BUILD_TIME__/g, now);
 fs.writeFileSync(htmlPath, htmlContent, "utf-8");
 console.log("");
-console.log("HTML: data=" + articles.length + " posts, v=" + version + ", time=" + now);
+console.log("HTML: data=" + articles.length + " posts, v=" + version);
 
 console.log("");
 console.log("========================================");
