@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Blog",
+      "detail": "MD -> HTML + index.json + inject (Ctrl+Shift+B)",
+      "type": "shell",
+      "command": "C:/Program Files/nodejs/node.exe",
+      "args": ["scripts/build.js"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,522 @@
+/* ============================================
+   极简个人博客 - 样式表
+   设计理念：纯白背景、黑白灰配色、大量留白
+   ============================================ */
+
+/* --- 全局重置 & 基础设置 --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   顶部导航
+   ============================================ */
+.site-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 48px;
+}
+
+.site-title {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #1a1a1a;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.site-nav {
+  margin-top: 16px;
+  display: flex;
+  gap: 28px;
+}
+
+.site-nav a {
+  font-size: 15px;
+  color: #888888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: #1a1a1a;
+}
+
+/* ============================================
+   文章列表（首页）
+   ============================================ */
+.post-list {
+  list-style: none;
+}
+
+.post-item {
+  display: flex;
+  align-items: baseline;
+  padding: 14px 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.post-item:hover {
+  opacity: 0.6;
+}
+
+.post-title {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1a1a1a;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.post-dots {
+  flex-grow: 1;
+  min-width: 24px;
+  margin: 0 12px;
+  border-bottom: 1px dotted #cccccc;
+  align-self: flex-end;
+  margin-bottom: 5px;
+}
+
+.post-date {
+  font-size: 14px;
+  color: #aaaaaa;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.post-list-empty {
+  text-align: center;
+  color: #aaaaaa;
+  font-size: 15px;
+  padding: 60px 0;
+}
+
+/* ============================================
+   文章详情
+   ============================================ */
+.back-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #888888;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.back-link:hover {
+  color: #1a1a1a;
+}
+
+.back-link::before {
+  content: "← ";
+}
+
+.article {
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.article h1 {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.article-meta {
+  font-size: 14px;
+  color: #aaaaaa;
+  margin-bottom: 40px;
+}
+
+.article h2 {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 40px 0 16px;
+}
+
+.article h3 {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333333;
+  margin: 32px 0 12px;
+}
+
+.article p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.article blockquote {
+  margin: 24px 0;
+  padding: 12px 20px;
+  border-left: 3px solid #dddddd;
+  color: #666666;
+  font-style: italic;
+}
+
+.article blockquote p {
+  margin-bottom: 8px;
+}
+
+.article ul,
+.article ol {
+  margin: 0 0 20px 24px;
+}
+
+.article li {
+  margin-bottom: 8px;
+}
+
+.article hr {
+  border: none;
+  border-top: 1px solid #eeeeee;
+  margin: 40px 0;
+}
+
+.article code {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+}
+
+.article pre {
+  background: #f8f8f8;
+  padding: 16px 20px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.article pre code {
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto;
+}
+
+/* ============================================
+   页面通用标题（归档、关于）
+   ============================================ */
+.page-heading {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   归档页
+   ============================================ */
+.archive-year {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 36px 0 12px;
+}
+
+.archive-year:first-child {
+  margin-top: 0;
+}
+
+.archive-item {
+  display: flex;
+  align-items: baseline;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.archive-item:hover {
+  opacity: 0.6;
+}
+
+.archive-item-date {
+  font-size: 13px;
+  color: #aaaaaa;
+  flex-shrink: 0;
+  width: 80px;
+}
+
+.archive-item-title {
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+.archive-empty {
+  text-align: center;
+  color: #aaaaaa;
+  font-size: 15px;
+  padding: 60px 0;
+}
+
+/* ============================================
+   关于我页
+   ============================================ */
+#about-content p {
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+#about-content ul {
+  margin: 0 0 20px 20px;
+}
+
+#about-content li {
+  margin-bottom: 8px;
+}
+
+#about-content a {
+  color: #555;
+}
+
+/* ============================================
+   【预留】评论区样式（display:none 直到启用）
+   ============================================ */
+.comment-heading {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 60px 0 24px;
+  padding-top: 40px;
+  border-top: 1px solid #eeeeee;
+}
+
+.comment-form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+  border-color: #999999;
+}
+
+.comment-form button {
+  align-self: flex-start;
+  padding: 8px 24px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.comment-form button:hover {
+  background: #444444;
+}
+
+/* ============================================
+   【预留】关注按钮样式（display:none 直到启用）
+   ============================================ */
+.follow-btn {
+  padding: 8px 24px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.follow-btn:hover {
+  background: #444444;
+}
+
+.follow-btn.following {
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+}
+
+/* ============================================
+   【预留】登录模态框样式（display:none 直到启用）
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  width: 360px;
+  max-width: 90vw;
+}
+
+.modal-box h2 {
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+  font-weight: 400;
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+
+.modal-box input {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 15px;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.modal-box input:focus {
+  border-color: #999999;
+}
+
+.modal-box button {
+  width: 100%;
+  padding: 10px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.modal-switch {
+  text-align: center;
+  font-size: 13px;
+  color: #888888;
+  margin-top: 16px;
+}
+
+.modal-switch a {
+  color: #1a1a1a;
+}
+
+/* ============================================================
+   file:// 协议提示
+   ============================================================ */
+#protocol-hint {
+  background-color: #fafafa;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  padding: 20px 0;
+  margin-bottom: 24px;
+}
+
+#protocol-hint p {
+  font-size: 14px;
+  color: #888888;
+  text-align: center;
+  margin: 4px 0;
+}
+
+#protocol-hint strong {
+  color: #555555;
+  font-weight: 600;
+}
+
+/* ============================================
+   页脚
+   ============================================ */
+.site-footer {
+  margin-top: 80px;
+  padding: 32px 0;
+  border-top: 1px solid #eeeeee;
+  text-align: center;
+  font-size: 13px;
+  color: #cccccc;
+}
+
+/* ============================================
+   响应式
+   ============================================ */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .site-header {
+    padding: 32px 0 24px;
+    margin-bottom: 32px;
+  }
+
+  .site-title {
+    font-size: 24px;
+  }
+
+  .article h1 {
+    font-size: 26px;
+  }
+
+  .article {
+    line-height: 1.75;
+  }
+
+  .archive-item-date {
+    width: 64px;
+    font-size: 12px;
+  }
+}

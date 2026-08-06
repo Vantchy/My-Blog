@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>极简博客</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=msh48vmi" />
+  </head>
+  <body>
+    <!-- ==================== 顶部导航 ==================== -->
+    <header class="site-header">
+      <div class="container">
+        <a href="#" class="site-title" id="site-title">极简博客</a>
+        <nav class="site-nav">
+          <a href="#" class="active" data-view="home" id="nav-home">首页</a>
+          <a href="#" data-view="archive" id="nav-archive">归档</a>
+          <a href="#" data-view="about" id="nav-about">关于我</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ==================== 主内容区 ==================== -->
+    <main class="container">
+
+      <!-- 列表视图：首页 -->
+      <section id="view-home" class="view">
+        <ul class="post-list" id="post-list">
+          <!-- JavaScript 动态渲染 -->
+        </ul>
+      </section>
+
+      <!-- 文章详情视图（默认隐藏） -->
+      <section id="view-detail" class="view" style="display:none">
+        <a href="#" class="back-link" data-back="home">返回首页</a>
+        <article class="article">
+          <h1 id="article-title"></h1>
+          <div class="article-meta" id="article-date"></div>
+          <div id="article-body"></div>
+        </article>
+
+        <!--
+        // ============================================================
+        // 【预留】评论区 — 未来功能，当前隐藏
+        // 启用时去掉下方 style="display:none" 即可
+        // 后端接口：POST /api/comments  |  GET /api/comments?post=xxx
+        // ============================================================
+        -->
+        <section id="comment-section" style="display:none">
+          <h2 class="comment-heading">评论</h2>
+          <div id="comment-list"></div>
+          <form id="comment-form" class="comment-form">
+            <input type="text" placeholder="昵称" id="comment-name" />
+            <textarea placeholder="写下你的想法…" id="comment-body" rows="3"></textarea>
+            <button type="submit">发表评论</button>
+          </form>
+        </section>
+      </section>
+
+      <!-- 归档视图（默认隐藏） -->
+      <section id="view-archive" class="view" style="display:none">
+        <h1 class="page-heading">归档</h1>
+        <div id="archive-content">
+          <!-- JavaScript 动态渲染 -->
+        </div>
+      </section>
+
+      <!-- 关于我视图（默认隐藏） -->
+      <section id="view-about" class="view" style="display:none">
+        <article class="article">
+          <h1>关于我</h1>
+          <div id="about-content">
+            <p>你好，我是 <strong>Vantchy</strong>。</p>
+            <p>一名热爱简单事物的开发者。喜欢咖啡、纸质书和命令行。相信好的设计就是尽量少的设计。</p>
+            <p>这个博客记录我的技术笔记、读书感想和生活随笔。没有任何商业目的，纯粹是写给自己的思考存档。</p>
+            <p>如果有任何想交流的想法，欢迎通过以下方式联系我：</p>
+            <ul>
+              <li>GitHub: <a href="https://github.com/Vantchy" target="_blank" rel="noopener">github.com/Vantchy</a></li>
+              <li>Email: <a href="mailto:2026201885@ruc.edu.com">2026201885@ruc.edu.com</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <!--
+        // ============================================================
+        // 【预留】关注 / 订阅功能 — 未来功能，当前隐藏
+        // 启用时去掉下方 style="display:none"
+        // 后端接口：POST /api/subscribe
+        // ============================================================
+        -->
+        <div id="follow-section" style="display:none">
+          <button id="follow-btn" class="follow-btn">+ 关注</button>
+          <span id="follower-count"></span>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- file:// 协议提示 -->
+    <div id="protocol-hint" style="display:none">
+      <div class="container">
+        <p>💡 当前为本地文件模式，点击文章将跳转到文章页面。</p>
+        <p>用 VSCode <strong>Live Server</strong> 插件打开获得完整体验。</p>
+      </div>
+    </div>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 极简博客 · 用最简单的方式记录思考 · build 2026/8/6 13:58:10</p>
+      </div>
+    </footer>
+
+    <!--
+    // ============================================================
+    // 【预留】登录模态框 — 未来功能，当前隐藏
+    // 后端接口：POST /api/login  |  POST /api/register  |  GET /api/user
+    // ============================================================
+    -->
+    <div id="login-modal" style="display:none">
+      <div class="modal-overlay">
+        <div class="modal-box">
+          <h2>登录</h2>
+          <form id="login-form">
+            <input type="text" placeholder="用户名" id="login-username" />
+            <input type="password" placeholder="密码" id="login-password" />
+            <button type="submit">登录</button>
+          </form>
+          <p class="modal-switch">
+            没有账号？<a href="#" id="show-register">注册</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 文章列表数据（build.js 自动注入，勿手动编辑） -->
+    <script id="post-data" type="application/json">[{"file":"2026-08-06-我的第一篇博客.html","title":"我的第一篇博客","date":"2026-08-06"},{"file":"2026-08-05-极简主义生活.html","title":"极简主义生活","date":"2026-08-05"},{"file":"2026-08-04-关于这个博客.html","title":"关于这个博客","date":"2026-08-04"}]</script>
+    <!-- 核心脚本 -->
+    <script src="assets/js/script.js?v=msh48vmi"></script>
+  </body>
+</html>
