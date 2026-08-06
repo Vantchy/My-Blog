@@ -267,12 +267,20 @@ function loadArticle(filename, title, date) {
 function extractArticleBody(html) {
   var m;
   m = html.match(/<article[^>]*class="article"[^>]*>([\s\S]*?)<\/article>/i);
-  if (m) return m[1].trim();
+  if (m) return stripTitleMeta(m[1]);
   m = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-  if (m) return m[1].trim();
+  if (m) return stripTitleMeta(m[1]);
   m = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
-  if (m) return m[1].trim();
+  if (m) return stripTitleMeta(m[1]);
   return html.trim();
+}
+
+// 去掉正文中的 <h1> 和 <div class="article-meta">，因为 index.html 模板已提供
+function stripTitleMeta(raw) {
+  return raw
+    .replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, "")
+    .replace(/^\s*<div\s+class="article-meta"[^>]*>[\s\S]*?<\/div>\s*/, "")
+    .trim();
 }
 
 function showArticle(title, date, bodyHTML) {
